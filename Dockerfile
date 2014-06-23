@@ -7,7 +7,7 @@ RUN sed 's/main$/main universe/' -i /etc/apt/sources.list
 RUN apt-get update
 
 # Set fr_FR.UTF-8 as default locale
-RUN locale-gen fr_FR.UTF-8 ; dpkg-reconfigure locales
+#RUN locale-gen fr_FR.UTF-8 ; dpkg-reconfigure locales
 #ENV LANGUAGE fr_FR.UTF-8
 #ENV LANG fr_FR.UTF-8
 #ENV LC_ALL fr_FR.UTF-8
