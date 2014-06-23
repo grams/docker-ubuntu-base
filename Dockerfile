@@ -2,15 +2,6 @@ FROM ubuntu:12.10
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# Use an apt caching proxy if available on build
-# To use this, you have to add the -DENABLE_APT_CACHE flag to 
-# the preprocessor command line.
-# If you've installed squid-deb-proxy and squid-deb-proxy-client
-# on your Docker host, then the following line will automatically
-# point Docker container instances to the correct address:
-#
-RUN /sbin/ip route | awk '/default/ { print "Acquire::http::Proxy \"http://"$3":8000\";" }' > /etc/apt/apt.conf.d/30proxy
-
 # Update apt sources contents
 RUN sed 's/main$/main universe/' -i /etc/apt/sources.list
 RUN apt-get update
