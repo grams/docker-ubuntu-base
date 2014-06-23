@@ -1,6 +1,7 @@
 FROM ubuntu:12.10
+MAINTAINER Guillaume Rams, guillaume.rams@deveryware.com
 
-ENV DEBIAN_FRONTEND noninteractive
+#ENV DEBIAN_FRONTEND noninteractive
 
 # Update apt sources contents
 RUN sed 's/main$/main universe/' -i /etc/apt/sources.list
