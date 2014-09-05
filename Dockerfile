@@ -18,4 +18,7 @@ RUN apt-get install libfuse2
 RUN cd /tmp && mkdir fuseinst && cd fuseinst && apt-get download fuse && dpkg-deb -x fuse_* . && dpkg-deb -e fuse_* && rm fuse_*.deb && /bin/echo -en '#!/bin/bash\nexit 0\n' > DEBIAN/postinst && dpkg-deb -b . /fuse.deb && dpkg -i /fuse.deb && rm -rf /tmp/fuseinst && cd /
 
 # Proceed with installations
-RUN apt-get install -y openjdk-7-jdk curl wget supervisor unzip rsync git ssh python-software-properties software-properties-common
+RUN apt-get install -y openjdk-7-jdk curl wget supervisor unzip rsync git ssh python-software-properties software-properties-common && apt-get clean
+
+# Run supervisord by default
+CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration=/etc/supervisor/supervisord.conf"]
